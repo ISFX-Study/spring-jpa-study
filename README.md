@@ -1,11 +1,13 @@
-JPA, 스프링 Data JPA Study
+JPA, Spring Data JPA Study
 =============
-> JPA, 스프링 Data JPA 스터디 입니다.
+> JPA, Spring Data JPA 스터디 입니다.
 
-![스프링DataJPA](https://blog.kakaocdn.net/dn/Sn2Dj/btq0nPrl873/ACS7qrimAoVuTS8oriAnv0/img.jpg)
+<p align="center">
+  <img src="https://blog.kakaocdn.net/dn/Sn2Dj/btq0nPrl873/ACS7qrimAoVuTS8oriAnv0/img.jpg" width="500" height="500">
+</p>
 
 ## :triangular_flag_on_post:  스터디 개요
-* **주제** : JPA, 스프링 Data JPA
+* **주제** : JPA, Spring Data JPA
 * **목표** : 책([JPA 퀵스타트](https://product.kyobobook.co.kr/detail/S000001891098)) 완독
 * **기간** : 2023-06-26 ~ 
 * **참가자(2명)** : 박은주, 고현아
