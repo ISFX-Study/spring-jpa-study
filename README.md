@@ -35,4 +35,3 @@ JPA, Spring Data JPA Study
 | 8 | 8주차 | 2023-08-14 | 2023-08-20 |  |  |
 
 ## :triangular_flag_on_post:  기타
-
