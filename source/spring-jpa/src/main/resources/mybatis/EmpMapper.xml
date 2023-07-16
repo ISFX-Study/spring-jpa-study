@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTO Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="EmployeeMapper">
+    <select id="selectEmpList" resultType="ch01.EmployeeVO">
+        SELECT ID
+            , NAME
+            , START_DATE
+            , TITLE
+            , DEPT_NAME
+            , SALARY
+        FROM S_EMP
+    </select>
+
+    <insert id="insertEmp" parameterType="ch01.EmployeeVO">
+        INSERT INTO S_EMP
+        (
+              ID
+            , NAME
+            , START_DATE
+            , TITLE
+            , DEPT_NAME
+            , SALARY
+        )
+        VALUES
+        (
+            ( SELECT NVL(MAX(ID), 0) + 1 FROM S_EMP )
+            , #{name}
+            , SYSDATE
+            , #{title}
+            , #{deptName}
+            , #{salary}
+        )
+    </insert>
+</mapper>
