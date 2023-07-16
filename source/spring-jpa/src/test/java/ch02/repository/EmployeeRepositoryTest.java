@@ -22,11 +22,6 @@ class EmployeeRepositoryTest {
     void test1() {
         System.out.println("#####");
         System.out.println(employeeRepository);
-
-//        Long id = Long.valueOf("2");
-//        Employee employee = employeeRepository.getEmployee(id);
-//
-//        Assertions.assertThat(employee.getId()).isEqualTo(id);
     }
 
     @Test
