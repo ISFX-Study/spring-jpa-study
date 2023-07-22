@@ -34,3 +34,4 @@ JPA, Spring Data JPA Study
 | 7 | 7회차 | 2023-09-18 | 2023-10-01 |  |  |
 
 ## :triangular_flag_on_post:  기타
++ 예제소스 : https://www.rubypaper.co.kr/entry/JPA-퀵스타트-예제파일
