@@ -32,19 +32,21 @@ import java.util.Date;
 //        , initialValue = 1 // 초기값
 //        , allocationSize = 1
 //)
-@TableGenerator(
-        name = "SEQ_TBL_GEN"           // generator명
-        , table = "TB_SEQ"               // 테이블명
-        , pkColumnName = "SEQ_NAME"      // PK컬럼명
-        , pkColumnValue = "EMP_SEQ"      // PK컬럼에 저장할 값
-        , valueColumnName = "NEXT_VALUE" // 실제 시퀀스
-        , initialValue = 0               // 초기값
-        , allocationSize = 1
-)
+//@TableGenerator(
+//        name = "SEQ_TBL_GEN"           // generator명
+//        , table = "TB_SEQ"               // 테이블명
+//        , pkColumnName = "SEQ_NAME"      // PK컬럼명
+//        , pkColumnValue = "EMP_SEQ"      // PK컬럼에 저장할 값
+//        , valueColumnName = "NEXT_VALUE" // 실제 시퀀스
+//        , initialValue = 0               // 초기값
+//        , allocationSize = 1
+//)
 public class Employee {
     @Id
     // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EMP_ID")
-    @GeneratedValue(strategy = GenerationType.TABLE, generator = "SEQ_TBL_GEN")
+    // @GeneratedValue(strategy = GenerationType.TABLE, generator = "SEQ_TBL_GEN")
+    // @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue
     private long id;  // 직원아이디
     private String name; // 직원이름
 

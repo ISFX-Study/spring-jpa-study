@@ -23,10 +23,6 @@ class EmployeeRepositoryTest {
         System.out.println("#####");
         System.out.println(employeeRepository);
 
-
-
-
-
     }
 
     @Test
@@ -48,14 +44,14 @@ class EmployeeRepositoryTest {
         try {
             // 엔티티 생성
             Employee employee = new Employee();
-            employee.setName("테스트2");
+            employee.setName("테스트3");
             employee.setTitle("사원");
             employee.setDeptName("부서명");
             employee.setSalary(3000.0);
             employee.setStartDate(new Date());
             // 날짜가 이상하게 들어감...
             // employee.setStartDate(LocalDateTime.now());
-            employee.setMemo("TemporalType.DATE 사용2");
+            employee.setMemo("GenerationType.AUTO 이용");
 
             // 트랜잭션 시작
             tx.begin();
