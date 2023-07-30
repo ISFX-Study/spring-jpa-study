@@ -1,14 +1,12 @@
 package ch02.repository;
 
 import ch02.domain.Employee;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Date;
 
@@ -252,6 +250,35 @@ class EmployeeRepositoryTest {
             if ( employee1 == employee2 ) {
                 System.out.println("employee1 == employee2");
             }
+        } catch (Exception e) {
+            e.printStackTrace();
+            // 트랜잭션 롤백
+            tx.rollback();
+        } finally {
+            // 엔티티 매니저 및 엔티티 매니저 팩토리 종료
+            em.close();
+            emf.close();
+        }
+    }
+
+    @Test
+    @DisplayName("find, getReference 테스트")
+    void test10() {
+        // 엔티티 매니저 팩토리 생성
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch02");
+
+        // 엔티티 매니저 생성
+        EntityManager em = emf.createEntityManager();
+
+        // 엔티티 트랜잭션 생성
+        EntityTransaction tx = em.getTransaction();
+
+        try {
+            // 엔티티 검색
+            Employee employee1 = em.find(Employee.class, Long.valueOf(10));
+            System.out.println("employee1 : " + employee1);
+            Employee employee2 = em.getReference(Employee.class, Long.valueOf(10));
+            System.out.println("employee2 : " + employee2 );
         } catch (Exception e) {
             e.printStackTrace();
             // 트랜잭션 롤백
