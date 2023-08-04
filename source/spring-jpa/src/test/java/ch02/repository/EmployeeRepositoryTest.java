@@ -151,9 +151,6 @@ class EmployeeRepositoryTest {
         }
     }
 
-
-    
-
     @Test
     @DisplayName("분리 상태 테스트")
     void test7() {
@@ -289,6 +286,32 @@ class EmployeeRepositoryTest {
         } finally {
             // 엔티티 매니저 및 엔티티 매니저 팩토리 종료
             em.close();
+            emf.close();
+        }
+    }
+
+    @Test
+    @DisplayName("엔티티 매니저 비교")
+    void test11() {
+        // 엔티티 매니저 팩토리 생성
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch02");
+
+        EntityManager em = null;
+        EntityManager em2=  null;
+        try {
+            // 엔티티 매니저 생성
+            em = emf.createEntityManager();
+            em2 = emf.createEntityManager();
+
+            System.out.println("em : " + em);
+            System.out.println("em2 : " + em2);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // 엔티티 매니저 및 엔티티 매니저 팩토리 종료
+            em.close();
+            em2.close();
             emf.close();
         }
     }
