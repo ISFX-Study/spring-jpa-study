@@ -22,7 +22,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
             <!-- 하이버네이트가 생성한 SQL 포맷여부 -->
             <property name="hibernate.format_sql" value="true" />
             <!-- JPA 스펙에 맞는 키 생성을 사용하도록 함 -->
-            <property name="hibernate.id.new_generator_mappings"  value="true" />
+            <property name="hibernate.id.new_generator_mappings" value="true" />
             <!-- DDL구문을 자동으로 처리여부
                 create : 기존 테이블 삭제 후 테이블 재생성
                 create-drop : 기존 테이블 삭제 후 테이블 재생성하고 애플리케이션 종료후 테이블 삭제

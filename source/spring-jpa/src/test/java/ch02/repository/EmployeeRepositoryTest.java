@@ -306,12 +306,102 @@ class EmployeeRepositoryTest {
             System.out.println("em : " + em);
             System.out.println("em2 : " + em2);
 
+            if ( em == em2 ) {
+                System.out.println("em == em2");
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
             // 엔티티 매니저 및 엔티티 매니저 팩토리 종료
             em.close();
             em2.close();
+            emf.close();
+        }
+    }
+
+    @Test
+    @DisplayName("고쟝 이슈 테스트")
+    void test12() {
+        // 엔티티 매니저 팩토리 생성
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch02");
+
+        // 엔티티 매니저 생성
+        EntityManager em = emf.createEntityManager();
+
+        // 엔티티 트랜잭션 생성
+        EntityTransaction tx = em.getTransaction();
+        try {
+            //직원 엔티티 생성 및 초기화
+            Employee emp = new Employee();
+
+            //직원 등록
+            emp.setName("aaa");
+
+            //DML 작업은 반드시 트랜잭션 내에서 실행해야(해당 쿼리 실행 자체를 않음)
+            tx.begin();
+            em.persist(emp); //엔티티 등록됨
+            emp.setName("bbb"); //관리중 엔티티에 변동 발생 -> update
+
+            if(em.contains(emp)){
+                //emp가 컨테이너에 등록되어있음
+                System.out.println("=== managed ===");
+            }
+
+            em.detach(emp);
+
+            if(!em.contains(emp)){
+                //emp가 컨테이너에 등록되어있지 않음
+                System.out.println("=== detached ===");
+            }
+            emp.setName("ccc"); //관리 중이 아니므로 update 되지 않음
+
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // 트랜잭션 롤백
+            tx.rollback();
+        } finally {
+            // 엔티티 매니저 및 엔티티 매니저 팩토리 종료
+            em.close();
+            emf.close();
+        }
+    }
+    @Test
+    @DisplayName("update 테스트")
+    void test13() {
+        // 엔티티 매니저 팩토리 생성
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch02");
+
+        // 엔티티 매니저 생성
+        EntityManager em = emf.createEntityManager();
+
+        // 엔티티 트랜잭션 생성
+        EntityTransaction tx = em.getTransaction();
+        try {
+            //직원 엔티티 생성 및 초기화
+            Employee emp = new Employee();
+
+            // 직원 등록
+            emp.setName("aaa");
+
+            tx.begin();
+
+            em.persist(emp); //엔티티 등록됨
+            // UPDATE문 한번만 수행됨
+            emp.setName("bbb");
+            emp.setName("ccc");
+
+            //TODO INSERT문 -> UPDATA문 수행되었음 => 파라미터 값에는 최종값만 출력이 되는건지 확인 필요
+
+            tx.commit();
+        } catch (Exception e) {
+            e.printStackTrace();
+            // 트랜잭션 롤백
+            tx.rollback();
+        } finally {
+            // 엔티티 매니저 및 엔티티 매니저 팩토리 종료
+            em.close();
             emf.close();
         }
     }
