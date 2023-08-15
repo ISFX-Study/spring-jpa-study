@@ -6,8 +6,9 @@
 http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
 
     <!-- 영속성 유닛 설정 -->
-    <persistence-unit name="ch02">
-        <class>ch02.domain.Employee</class>
+    <persistence-unit name="domain">
+        <class>domain.Employee</class>
+        <class>domain.Department</class>
         <!-- JPA 프로퍼티 설정 -->
         <properties>
             <!-- 데이터 소스 관련 설정 -->
@@ -28,7 +29,7 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
                 create-drop : 기존 테이블 삭제 후 테이블 재생성하고 애플리케이션 종료후 테이블 삭제
                 update : 테이블 재생성
             -->
-            <property name="hibernate.hbm2ddl.auto" value="create" />
+            <property name="hibernate.hbm2ddl.auto" value="update" />
             <!--
                 Dialect 클래스 설정
                  : key 생성하는 방식으로 DB변경시 이 클래스만 교체해주면 되지만 어디까지 이론상이며 그 외에도 신경쓸것이 많음

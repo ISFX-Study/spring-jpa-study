@@ -1,4 +1,4 @@
-import ch02.repository.EmployeeRepository;
+import repository.EmployeeRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

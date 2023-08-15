@@ -1,7 +1,7 @@
 package com.study.springjpa;
 
-import ch02.domain.Employee;
-import ch02.repository.EmployeeRepository;
+import domain.Employee;
+import repository.EmployeeRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;

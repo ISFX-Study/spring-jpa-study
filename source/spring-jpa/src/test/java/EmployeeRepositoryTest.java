@@ -1,13 +1,10 @@
-package ch02.repository;
-
-import ch02.domain.Employee;
-import org.junit.jupiter.api.Assertions;
+import repository.EmployeeRepository;
+import domain.Employee;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 class EmployeeRepositoryTest {
@@ -44,7 +41,6 @@ class EmployeeRepositoryTest {
             Employee employee = new Employee();
             employee.setName("테스트3");
             employee.setTitle("사원");
-            employee.setDeptName("부서명");
             employee.setSalary(3000.0);
             employee.setStartDate(new Date());
             // 날짜가 이상하게 들어감...

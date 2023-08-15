@@ -1,6 +1,7 @@
-package ch02.domain;
+package domain;
 
 import lombok.Data;
+import lombok.ToString;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -24,6 +25,7 @@ import java.util.Date;
  *    - PK 컬럼인 경우에만 사용
  */
 @Data
+@ToString(exclude = "dept")
 @Entity
 @Table(name="S_EMP")
 //@SequenceGenerator(
@@ -46,17 +48,30 @@ public class Employee {
     // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EMP_ID")
     // @GeneratedValue(strategy = GenerationType.TABLE, generator = "SEQ_TBL_GEN")
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;  // 직원아이디
+
+    @Column(length = 25, nullable = false)
     private String name; // 직원이름
 
     @Column(name="START_DATE")
     @Temporal(TemporalType.DATE)
     private Date startDate; // 입사일
-    private String title; // 직급
 
-    @Column(name="DEPT_NAME")
-    private String deptName; // 부서이름
+    private String title; // 직급
     private Double salary; // 급여
     private String memo;   // 비고
+
+    /**
+     * @ManyToOne : 다대일 관계 매핑
+     *      optional = true : outer join
+     *      optional = false : inner join
+     *
+     *      fetch = FetchType.EAGER : 같이 가져와
+     *      fetch = FetchType.LAZY : 따로 가져와
+     * @JoinColumn : 외래키 설정
+     */
+    @ManyToOne
+    @JoinColumn(name = "DEPT_ID")
+    private Department dept;    // 부서ID
 }
