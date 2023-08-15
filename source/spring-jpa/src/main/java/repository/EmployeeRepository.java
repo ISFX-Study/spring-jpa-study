@@ -1,6 +1,6 @@
-package ch02.repository;
+package repository;
 
-import ch02.domain.Employee;
+import domain.Employee;
 import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
