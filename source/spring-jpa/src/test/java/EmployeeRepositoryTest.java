@@ -24,7 +24,7 @@ class EmployeeRepositoryTest {
     @DisplayName("하이버네이트 테스트 - presistence.xml 사용")
     void test2() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch02");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -69,7 +69,7 @@ class EmployeeRepositoryTest {
     @DisplayName("Drity Checking")
     void test3() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch02");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -107,7 +107,7 @@ class EmployeeRepositoryTest {
     @DisplayName("find")
     void test5() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch02");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -129,7 +129,7 @@ class EmployeeRepositoryTest {
     @DisplayName("find - 없는 데이터 조회한 경우")
     void test6() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch02");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -151,7 +151,7 @@ class EmployeeRepositoryTest {
     @DisplayName("분리 상태 테스트")
     void test7() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch02");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -194,7 +194,7 @@ class EmployeeRepositoryTest {
     @DisplayName("삭제 상태 테스트")
     void test8() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch02");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -230,7 +230,7 @@ class EmployeeRepositoryTest {
     @DisplayName("엔티티 캐시 검색 테스트")
     void test9() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch02");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -261,7 +261,7 @@ class EmployeeRepositoryTest {
     @DisplayName("find, getReference 테스트")
     void test10() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch02");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -290,7 +290,7 @@ class EmployeeRepositoryTest {
     @DisplayName("엔티티 매니저 비교")
     void test11() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch02");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         EntityManager em = null;
         EntityManager em2=  null;
@@ -320,7 +320,7 @@ class EmployeeRepositoryTest {
     @DisplayName("고쟝 이슈 테스트")
     void test12() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch02");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -330,14 +330,17 @@ class EmployeeRepositoryTest {
         try {
             //직원 엔티티 생성 및 초기화
             Employee emp = new Employee();
-
-            //직원 등록
             emp.setName("aaa");
 
             //DML 작업은 반드시 트랜잭션 내에서 실행해야(해당 쿼리 실행 자체를 않음)
             tx.begin();
+
             em.persist(emp); //엔티티 등록됨
+
             emp.setName("bbb"); //관리중 엔티티에 변동 발생 -> update
+
+            // 플러시 해주면 실행결과에 update문까지 나옴
+            em.flush();
 
             if(em.contains(emp)){
                 //emp가 컨테이너에 등록되어있음
@@ -352,6 +355,7 @@ class EmployeeRepositoryTest {
             }
             emp.setName("ccc"); //관리 중이 아니므로 update 되지 않음
 
+            // 관리를 해제하고 트랜잭션 커밋을 하면 'aaa' 엔티티만 등록될 것
             tx.commit();
         } catch (Exception e) {
             e.printStackTrace();
@@ -367,7 +371,7 @@ class EmployeeRepositoryTest {
     @DisplayName("update 테스트")
     void test13() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("ch02");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
