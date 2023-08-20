@@ -11,7 +11,7 @@ import java.util.Date;
 
 class Ch04Test {
     @Test
-    @DisplayName("부서 등록")
+    @DisplayName("부서 등록 - 4회차 이슈")
     void test1() {
         // 엔티티 매니저 팩토리 생성
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
@@ -40,8 +40,11 @@ class Ch04Test {
             employee2.setDept(dept);
             em.persist(employee2);
 
+            // TODO flush() -> commit() 호출 안 했는데 데이터 등록됨.. 왜지????
+            em.flush();
+
             // 트랜잭션 커밋
-            tx.commit();
+            // tx.commit();
         } catch (Exception e) {
             e.printStackTrace();
             // 트랜잭션 롤백
