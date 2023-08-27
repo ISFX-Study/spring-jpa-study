@@ -21,6 +21,8 @@ public class Department {
     @Column(name="DEPT_NAME", length = 25, nullable = false)
     private String deptName;    // 부서명
 
-    @OneToMany(mappedBy = "dept", fetch = FetchType.LAZY)
+    // @OneToMany(mappedBy = "dept", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
+    @OneToMany(mappedBy = "dept", cascade = {CascadeType.PERSIST}, orphanRemoval = true)
+    // @OneToMany(mappedBy = "dept", fetch = FetchType.LAZY)
     private List<Employee> employeeList = new ArrayList<>();
 }
