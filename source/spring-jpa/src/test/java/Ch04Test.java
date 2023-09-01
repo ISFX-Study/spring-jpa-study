@@ -1,13 +1,14 @@
 import domain.Department;
 import domain.Employee;
+import org.hibernate.FlushMode;
+import org.hibernate.Session;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.expression.spel.ast.NullLiteral;
+import org.springframework.transaction.annotation.Transactional;
 
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.EntityTransaction;
-import javax.persistence.Persistence;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -108,12 +109,16 @@ class Ch04Test {
 
     @Test
     @DisplayName("flush만 했는데 DB에 데이터 등록됨")
+//  @Transactional(readOnly = true)
     void test4() {
         // 엔티티 매니저 팩토리 생성
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
+
+        Session session = em.unwrap(Session.class);
+        session.setHibernateFlushMode(FlushMode.MANUAL);
 
         // 엔티티 트랜잭션 생성
         EntityTransaction tx = em.getTransaction();
@@ -122,31 +127,31 @@ class Ch04Test {
             // 트랜잭션 시작
             tx.begin();
 
-//            Department dept = new Department();
-//            dept.setDeptName("개발1팀");
-//            em.persist(dept);
-//
-//            Employee employee = new Employee();
-//            employee.setName("개발자1");
-//            employee.setDept(dept);
-//            em.persist(employee);
-//
-//            Employee employee2 = new Employee();
-//            employee2.setName("개발자2");
-//            employee2.setDept(dept);
-//            em.persist(employee2);
+            Department dept = new Department();
+            dept.setDeptName("개발1팀");
+            em.persist(dept);
 
-            Employee employee = em.find(Employee.class, Long.valueOf("1"));
-            employee.setMemo("flush()만 호출");
+            Employee employee = new Employee();
+            employee.setName("개발자1");
+            employee.setDept(dept);
+            em.persist(employee);
+
+            Employee employee2 = new Employee();
+            employee2.setName("개발자2");
+            employee2.setDept(dept);
+            em.persist(employee2);
+
+//            Employee employee = em.find(Employee.class, Long.valueOf("1"));
+//            employee.setMemo("flush()만 호출");
 
             /*
              * TODO flush()만 호출했는데 DB에 데이터 등록됨.. 왜지????
              *  =>
              */
-            em.flush();
+//            em.flush();
 
             // 트랜잭션 커밋
-            //tx.commit();
+            tx.commit();
         } catch (Exception e) {
             e.printStackTrace();
             // 트랜잭션 롤백
