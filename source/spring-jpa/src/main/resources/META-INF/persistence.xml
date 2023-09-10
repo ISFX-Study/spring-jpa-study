@@ -9,6 +9,8 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
     <persistence-unit name="domain">
         <class>domain.Employee</class>
         <class>domain.Department</class>
+        <class>domain.EmployeeCh05</class>
+        <class>domain.EmployeeCardCh05</class>
         <!-- JPA 프로퍼티 설정 -->
         <properties>
             <!-- 데이터 소스 관련 설정 -->
