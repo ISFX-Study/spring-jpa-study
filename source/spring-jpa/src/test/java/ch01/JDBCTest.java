@@ -22,8 +22,8 @@ public class JDBCTest {
         // Oracle19 버전인 경우 => "jdbc:oracle:thin:@localhost:1521:orcl"
         // Oracle11 버전인 경우 => "jdbc:oracle:thin:@localhost:1521:XE"
         String url = "jdbc:oracle:thin:@localhost:1521:XE";
-        String user = "test";
-        String pwd = "test";
+        String user = "TEST";
+        String pwd = "TEST";
 
         try (Connection conn = DriverManager.getConnection(url, user, pwd)) {
             System.out.println("접속 성공 : " + conn);

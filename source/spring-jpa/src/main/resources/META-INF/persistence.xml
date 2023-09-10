@@ -13,8 +13,8 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
         <properties>
             <!-- 데이터 소스 관련 설정 -->
             <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
-            <property name="javax.persistence.jdbc.user" value="test" />
-            <property name="javax.persistence.jdbc.password" value="test" />
+            <property name="javax.persistence.jdbc.user" value="TEST" />
+            <property name="javax.persistence.jdbc.password" value="TEST" />
             <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE" />
 
             <!-- JPA 구현체 관련 설정 -->
@@ -34,8 +34,8 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
                 Dialect 클래스 설정
                  : key 생성하는 방식으로 DB변경시 이 클래스만 교체해주면 되지만 어디까지 이론상이며 그 외에도 신경쓸것이 많음
             -->
-<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />-->
-            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect" />
+            <property name="hibernate.dialect" value="org.hibernate.dialect.OracleDialect" />
+<!--            <property name="hibernate.dialect" value="org.hibernate.dialect.Oracle12cDialect" />-->
         </properties>
     </persistence-unit>
 </persistence>

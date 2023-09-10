@@ -91,20 +91,20 @@ class Ch04Test {
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
 
-        try {
-            Department department = em.find(Department.class, Long.valueOf("1"));
-            System.out.println("### getEmployeeList : " + department.getEmployeeList().size());
-
-            for (Employee employee : department.getEmployeeList()) {
-                System.out.println("#### employee :" + employee);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        } finally {
-            // 엔티티 매니저 및 엔티티 매니저 팩토리 종료
-            em.close();
-            emf.close();
-        }
+//        try {
+//            Department department = em.find(Department.class, Long.valueOf("1"));
+//            System.out.println("### getEmployeeList : " + department.getEmployeeList().size());
+//
+//            for (Employee employee : department.getEmployeeList()) {
+//                System.out.println("#### employee :" + employee);
+//            }
+//        } catch (Exception e) {
+//            e.printStackTrace();
+//        } finally {
+//            // 엔티티 매니저 및 엔티티 매니저 팩토리 종료
+//            em.close();
+//            emf.close();
+//        }
     }
 
     @Test
@@ -193,7 +193,7 @@ class Ch04Test {
                 employeeList.add(i, employee);
             }
 
-            dept.setEmployeeList(employeeList);
+//            dept.setEmployeeList(employeeList);
 
             em.persist(dept);
 
@@ -301,8 +301,8 @@ class Ch04Test {
             // Employee에서  DEPT_ID 컬럼이 NULL인 데이터는 삭제되지 않음
             //em.remove(dept);
 
-            List<Employee> employeeList = dept.getEmployeeList();
-            employeeList.clear();
+//            List<Employee> employeeList = dept.getEmployeeList();
+//            employeeList.clear();
 
             // 트랜잭션 커밋
             tx.commit();
