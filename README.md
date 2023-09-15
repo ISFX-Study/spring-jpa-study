@@ -30,7 +30,7 @@ JPA, Spring Data JPA Study
 | 3 | 3회차 | 2023-07-24 | 2023-08-06 | :white_check_mark: | :white_check_mark: |
 | 4 | 4회차 | 2023-08-07 | 2023-08-20 | :white_check_mark: | :white_check_mark: |
 | 5 | 5회차 | 2023-08-21 | 2023-09-03 | :white_check_mark: | :white_check_mark: |
-| 6 | 6회차 | 2023-09-04 | 2023-09-17 |  |  |
+| 6 | 6회차 | 2023-09-04 | 2023-09-17 | :white_check_mark: |  |
 | 7 | 7회차 | 2023-09-18 | 2023-10-01 |  |  |
 
 ## :triangular_flag_on_post:  기타
