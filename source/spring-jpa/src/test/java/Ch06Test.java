@@ -158,4 +158,81 @@ public class Ch06Test {
             emf.close();
         }
     }
+
+    @Test
+    @DisplayName("조인")
+    void test4() {
+        // 엔티티 매니저 팩토리 생성
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+
+        // 엔티티 매니저 생성
+        EntityManager em = emf.createEntityManager();
+
+        StringBuffer innerSb = new StringBuffer();
+        innerSb.append("SELECT e, d");
+        innerSb.append("  FROM Employee e");
+        innerSb.append(" INNER JOIN e.dept d");
+
+        StringBuffer outerSb = new StringBuffer();
+        outerSb.append("SELECT e, d");
+        outerSb.append("  FROM Employee e");
+        outerSb.append("  LEFT OUTER JOIN e.dept d");
+        try {
+            TypedQuery<Object[]> query = em.createQuery(innerSb.toString(), Object[].class);
+            TypedQuery<Object[]> query2 = em.createQuery(outerSb.toString(), Object[].class);
+
+            List<Object[]> list = query.getResultList();
+            System.out.println("############ INNER JOIN ############");
+            for (Object[] item : list) {
+                System.out.println("### item = " + Arrays.toString(item));
+            }
+
+            List<Object[]> list2 = query2.getResultList();
+            System.out.println("############ OUTER JOIN ############");
+            for (Object[] item : list2) {
+                System.out.println("### item = " + Arrays.toString(item));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // 엔티티 매니저 및 엔티티 매니저 팩토리 종료
+            em.close();
+            emf.close();
+        }
+    }
+
+    @Test
+    @DisplayName("JPQL XML")
+    void test5() {
+        // 엔티티 매니저 팩토리 생성
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+
+        // 엔티티 매니저 생성
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            // @NamedQuery 이용
+//            List<Employee> list = em.createQuery("Employee.searchEmployee", Employee.class)
+//                    .setParameter("name", "%개발자%")
+//                    .getResultList();
+//            System.out.println("### @NamedQuery  : " + list);
+
+            // jpql xml 이용
+//            List<Employee> list2 = em.createQuery("Employee.searchEmployee2", Employee.class)
+//                         .setParameter("name", "%개발자%")
+//                         .getResultList();
+//            System.out.println("### createQuery : " + list2);
+
+            List<Employee> list3 = em.createNativeQuery("Employee.searchName", Employee.class)
+                    .setParameter("name", "%개발자%")
+                    .getResultList();
+            System.out.println("### createNativeQuery : " + list3);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // 엔티티 매니저 및 엔티티 매니저 팩토리 종료
+            em.close();
+            emf.close();
+        }
+    }
 }
