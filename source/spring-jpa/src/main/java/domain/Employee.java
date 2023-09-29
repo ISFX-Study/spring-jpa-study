@@ -2,6 +2,7 @@ package domain;
 
 import lombok.Data;
 import lombok.ToString;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.sql.Timestamp;
@@ -74,4 +75,10 @@ public class Employee {
     @ManyToOne
     @JoinColumn(name = "DEPT_ID")
     private Department dept;    // 부서ID
+
+//    @ManyToOne
+//    @JoinColumn(name = "DEPT_ID", nullable = false)
+//    @Cascade(CascadeType.REMOVE)
+//    private Department dept;    // 부서ID
+
 }

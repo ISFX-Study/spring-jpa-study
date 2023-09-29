@@ -40,12 +40,12 @@ public class Ch05Test {
             card.setEmployeeCh05(employee);
             em.persist(card);
 
-            em.flush();
+//            em.flush();
 
-            EmployeeCardCh05 findcard = em.find(EmployeeCardCh05.class, Long.valueOf("2"));
-            System.out.println("findcard : " + findcard);
-            System.out.println("사원증번호 : " + findcard.getCardId());
-            System.out.println("직원명 : " + findcard.getEmployeeCh05().getName());
+//            EmployeeCardCh05 findcard = em.find(EmployeeCardCh05.class, Long.valueOf("2"));
+//            System.out.println("findcard : " + findcard);
+//            System.out.println("사원증번호 : " + findcard.getCardId());
+//            System.out.println("직원명 : " + findcard.getEmployeeCh05().getName());
 
             // 트랜잭션 커밋
             tx.commit();

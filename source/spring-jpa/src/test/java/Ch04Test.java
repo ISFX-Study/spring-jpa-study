@@ -193,7 +193,7 @@ class Ch04Test {
                 employeeList.add(i, employee);
             }
 
-//            dept.setEmployeeList(employeeList);
+            dept.setEmployeeList(employeeList);
 
             em.persist(dept);
 
@@ -298,12 +298,13 @@ class Ch04Test {
 
             Department dept = em.find(Department.class, Long.valueOf("1"));
 
-            // Employee에서  DEPT_ID 컬럼이 NULL인 데이터는 삭제되지 않음
-            //em.remove(dept);
-
 //            List<Employee> employeeList = dept.getEmployeeList();
-//            employeeList.clear();
 
+            Employee employee = em.find(Employee.class, Long.valueOf("2"));
+
+            // Employee에서  DEPT_ID 컬럼이 NULL인 데이터는 삭제되지 않음
+
+            em.remove(dept);
             // 트랜잭션 커밋
             tx.commit();
         } catch (Exception e) {
