@@ -44,8 +44,9 @@ import java.util.Date;
 //        , initialValue = 0               // 초기값
 //        , allocationSize = 1
 //)
-//@NamedQuery(name = "Employee.searchEmployee", query = "SELECT e FROM Employee e WHERE e.name LIKE :name")
-@NamedNativeQuery(name = "Employee.searchName", query = "SELECT * FROM S_EMP S WHERE S.NAME LIKE  :name ")
+@NamedQuery(name = "Employee.searchNamedQuery", query = "SELECT e FROM Employee e WHERE e.name LIKE :name")
+@NamedNativeQuery(name = "Employee.searchNativeQuery", query = "SELECT * FROM S_EMP S WHERE S.NAME LIKE '%' || :name || '%' ")
+//@NamedNativeQuery(name = "Employee.searchNativeQuery", query = "SELECT * FROM S_EMP S WHERE S.NAME LIKE :name")
 public class Employee {
     @Id
     // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EMP_ID")

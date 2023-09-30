@@ -3,7 +3,7 @@
                  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
                  xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence
                                      http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-    <named-query name="Employee.searchEmployee2">
+    <named-query name="Employee.searchNamedQuery2">
         <query>
             <![CDATA[
             SELECT e
@@ -13,13 +13,13 @@
         </query>
     </named-query>
 
-<!--    <named-query name="Employee.searchEmployeeNative">-->
-<!--        <query>-->
-<!--            <![CDATA[-->
-<!--            SELECT *-->
-<!--              FROM S_EMP E-->
-<!--              WHERE E.ID = :id-->
-<!--            ]]>-->
-<!--        </query>-->
-<!--    </named-query>-->
+    <named-native-query name="Employee.searchNativeQuery2">
+        <query>
+            <![CDATA[
+            SELECT *
+              FROM S_EMP E
+              WHERE E.NAME LIKE '%' ||  :name || '%'
+            ]]>
+        </query>
+    </named-native-query>
 </entity-mappings>

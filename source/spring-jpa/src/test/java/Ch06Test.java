@@ -202,7 +202,7 @@ public class Ch06Test {
     }
 
     @Test
-    @DisplayName("JPQL XML")
+    @DisplayName("다양한 쿼리 사용하기")
     void test5() {
         // 엔티티 매니저 팩토리 생성
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
@@ -212,21 +212,38 @@ public class Ch06Test {
 
         try {
             // @NamedQuery 이용
-//            List<Employee> list = em.createQuery("Employee.searchEmployee", Employee.class)
-//                    .setParameter("name", "%개발자%")
-//                    .getResultList();
-//            System.out.println("### @NamedQuery  : " + list);
-
-            // jpql xml 이용
-//            List<Employee> list2 = em.createQuery("Employee.searchEmployee2", Employee.class)
-//                         .setParameter("name", "%개발자%")
-//                         .getResultList();
-//            System.out.println("### createQuery : " + list2);
-
-            List<Employee> list3 = em.createNativeQuery("Employee.searchName", Employee.class)
+            List<Employee> list = em.createNamedQuery("Employee.searchNamedQuery", Employee.class)
                     .setParameter("name", "%개발자%")
                     .getResultList();
-            System.out.println("### createNativeQuery : " + list3);
+            System.out.println("### @NamedQuery  : " + list);
+
+            // XML - NamedQuery 이용
+            List<Employee> list2 = em.createNamedQuery("Employee.searchNamedQuery2", Employee.class)
+                         .setParameter("name", "%개발자%")
+                         .getResultList();
+            System.out.println("### createQuery : " + list2);
+
+            // XML - NamedNativeQuery 이용
+            Query query2 = em.createNamedQuery("Employee.searchNativeQuery2");
+            query2.setParameter("name", "개발자");
+            List<Object[]> list4 = query2.getResultList();
+            for (Object[] item : list4) {
+                System.out.println("### item = " + Arrays.toString(item));
+            }
+
+            // TODO 결과 타입 오류 발생
+//            TypedQuery<Employee> query = em.createNamedQuery("Employee.searchNativeQuery", Employee.class);
+//            query.setParameter("name", "개발자");
+//            List<Employee> list3 = query.getResultList();
+//            System.out.println("### @NamedNativeQuery : " + list3.size());
+
+            // @NamedNativeQuery 이용
+            Query query = em.createNamedQuery("Employee.searchNativeQuery");
+            query.setParameter("name", "개발자");
+            List<Object[]> list3 = query.getResultList();
+            for (Object[] item : list3) {
+                System.out.println("### item = " + Arrays.toString(item));
+            }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
