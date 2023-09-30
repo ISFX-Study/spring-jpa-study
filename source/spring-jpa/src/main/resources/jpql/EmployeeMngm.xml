@@ -22,4 +22,18 @@
             ]]>
         </query>
     </named-native-query>
+
+    <named-native-query name="Employee.searchNativeQuery3" result-set-mapping="nativeResultMap">
+        <query>
+            <![CDATA[
+            SELECT *
+              FROM S_EMP E
+              WHERE E.NAME LIKE '%' ||  :name || '%'
+            ]]>
+        </query>
+    </named-native-query>
+
+    <sql-result-set-mapping name="nativeResultMap">
+        <entity-result entity-class="domain.Employee" />
+    </sql-result-set-mapping>
 </entity-mappings>

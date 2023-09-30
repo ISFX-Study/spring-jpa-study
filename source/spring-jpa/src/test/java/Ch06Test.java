@@ -202,8 +202,32 @@ public class Ch06Test {
     }
 
     @Test
-    @DisplayName("다양한 쿼리 사용하기")
+    @DisplayName("createQuery 사용")
     void test5() {
+        // 엔티티 매니저 팩토리 생성
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+
+        // 엔티티 매니저 생성
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            TypedQuery<Employee> typedQuery = em.createQuery("SELECT e FROM Employee e WHERE e.name LIKE :name", Employee.class);
+            typedQuery.setParameter("name", "%개발자%");
+            List<Employee> typedList = typedQuery.getResultList();
+
+            System.out.println("###  createQuery : " + typedList);
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // 엔티티 매니저 및 엔티티 매니저 팩토리 종료
+            em.close();
+            emf.close();
+        }
+    }
+
+    @Test
+    @DisplayName("createNamedQuery 사용")
+    void test6() {
         // 엔티티 매니저 팩토리 생성
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
@@ -215,13 +239,13 @@ public class Ch06Test {
             List<Employee> list = em.createNamedQuery("Employee.searchNamedQuery", Employee.class)
                     .setParameter("name", "%개발자%")
                     .getResultList();
-            System.out.println("### @NamedQuery  : " + list);
+            System.out.println("### @NamedQuery 이용  : " + list);
 
             // XML - NamedQuery 이용
             List<Employee> list2 = em.createNamedQuery("Employee.searchNamedQuery2", Employee.class)
-                         .setParameter("name", "%개발자%")
-                         .getResultList();
-            System.out.println("### createQuery : " + list2);
+                    .setParameter("name", "%개발자%")
+                    .getResultList();
+            System.out.println("### XML - NamedQuery 이용 : " + list2);
 
             // XML - NamedNativeQuery 이용
             Query query2 = em.createNamedQuery("Employee.searchNativeQuery2");
@@ -231,19 +255,38 @@ public class Ch06Test {
                 System.out.println("### item = " + Arrays.toString(item));
             }
 
-            // TODO 결과 타입 오류 발생
-//            TypedQuery<Employee> query = em.createNamedQuery("Employee.searchNativeQuery", Employee.class);
-//            query.setParameter("name", "개발자");
-//            List<Employee> list3 = query.getResultList();
-//            System.out.println("### @NamedNativeQuery : " + list3.size());
+            // XML - NamedNativeQuery 이용 , result-set-mapping 정의
+            TypedQuery<Employee> nativeQuery = em.createNamedQuery("Employee.searchNativeQuery3", Employee.class);
+            nativeQuery.setParameter("name", "개발자");
+            List<Employee> list3 = nativeQuery.getResultList();
+            System.out.println("### @NamedNativeQuery : " + list3);
 
-            // @NamedNativeQuery 이용
-            Query query = em.createNamedQuery("Employee.searchNativeQuery");
-            query.setParameter("name", "개발자");
-            List<Object[]> list3 = query.getResultList();
-            for (Object[] item : list3) {
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // 엔티티 매니저 및 엔티티 매니저 팩토리 종료
+            em.close();
+            emf.close();
+        }
+    }
+
+    @Test
+    @DisplayName("createNativeQuery 사용")
+    void test7() {
+        // 엔티티 매니저 팩토리 생성
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+
+        // 엔티티 매니저 생성
+        EntityManager em = emf.createEntityManager();
+
+        try {
+            Query nativeQuery2 =  em.createNativeQuery("SELECT * FROM S_EMP S WHERE S.NAME LIKE :name");
+            nativeQuery2.setParameter("name", "%개발자%");
+            List<Object[]> list6 = nativeQuery2.getResultList();
+            for (Object[] item : list6) {
                 System.out.println("### item = " + Arrays.toString(item));
             }
+
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

@@ -46,7 +46,6 @@ import java.util.Date;
 //)
 @NamedQuery(name = "Employee.searchNamedQuery", query = "SELECT e FROM Employee e WHERE e.name LIKE :name")
 @NamedNativeQuery(name = "Employee.searchNativeQuery", query = "SELECT * FROM S_EMP S WHERE S.NAME LIKE '%' || :name || '%' ")
-//@NamedNativeQuery(name = "Employee.searchNativeQuery", query = "SELECT * FROM S_EMP S WHERE S.NAME LIKE :name")
 public class Employee {
     @Id
     // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EMP_ID")
