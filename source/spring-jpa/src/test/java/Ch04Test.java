@@ -117,9 +117,6 @@ class Ch04Test {
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
 
-        Session session = em.unwrap(Session.class);
-        session.setHibernateFlushMode(FlushMode.MANUAL);
-
         // 엔티티 트랜잭션 생성
         EntityTransaction tx = em.getTransaction();
 
