@@ -13,7 +13,7 @@ import java.util.Date;
 @Table(name="S_EMP07")
 public class Employee07 {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 //    @GeneratedValue(strategy = GenerationType.IDENTITY) => Oracle 11g는 해당 기능이 없어서 사용 불가
     private long id;
 
@@ -29,12 +29,24 @@ public class Employee07 {
     @Column(name = "TITLE")
     private String title;
 
-    @Column(name = "DEPT_NAME")
-    private String deptName;
+//    @Column(name = "DEPT_NAME")
+//    private String deptName;
 
     @Column(name = "SALARY")
     private Double salary;
 
     @Column(name = "COMMISSION_PCT")
     private Double commissionPct;
+
+    @ManyToOne
+    @JoinColumn(name = "DEPT_ID")
+    private Department07 dept;    // 부서ID
+
+    // Department 엔티티의 컬렉션에도 Employee 엔티티를 참조하기 위해서 추가함
+    public void setDept(Department07 department) {
+        this.dept = department;
+        if ( department != null ) {
+            department.getEmployeeList().add(this);
+        }
+    }
 }

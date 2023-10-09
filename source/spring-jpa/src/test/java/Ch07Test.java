@@ -1,3 +1,4 @@
+import domain.Department07;
 import domain.Employee07;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
@@ -69,6 +70,59 @@ public class Ch07Test {
     }
 
     @Test
+    @DisplayName("크라이테리어 - 명시적 조인")
+    void test2() {
+        // 엔티티 매니저 팩토리 생성
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+
+        // 엔티티 매니저 생성
+        EntityManager em = emf.createEntityManager();
+
+        Map<String, Object> dataMap = new HashMap<>();
+        dataMap.put("deptName", "SI팀");
+        dataMap.put("name", "개발자3");
+
+        try {
+            CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+
+            CriteriaQuery<Object[]> criteriaQuery = criteriaBuilder.createQuery(Object[].class);
+
+            // FROM
+            Root<Employee07> employee = criteriaQuery.from(Employee07.class);
+            // INNER JOIN
+            Join<Employee07, Department07> dept = employee.join("dept");
+            // LEFT OUTER JOIN
+//            Join<Employee07, Department07> dept2 = employee.join("dept", JoinType.LEFT);
+
+            Predicate[] condition = {
+                      criteriaBuilder.equal(employee.get("dept").get("deptName"), dataMap.get("deptName"))
+                    , criteriaBuilder.equal(employee.get("name"), dataMap.get("name"))
+            };
+
+            // WHERE
+//            criteriaQuery.where(criteriaBuilder.equal(employee.get("dept").get("deptName"), dataMap.get("deptName")));
+            criteriaQuery.where(criteriaBuilder.and(condition));
+
+            // SELECT
+            criteriaQuery.multiselect(employee.get("name"), dept.get("deptName"));
+
+            // ORDER BY
+            criteriaQuery.orderBy(criteriaBuilder.desc(employee.get("id")));
+
+            List<Object[]> resultList = em.createQuery(criteriaQuery).getResultList();
+            for (Object[] item : resultList) {
+                logger.warn("#### item = {}", Arrays.toString(item));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            // 엔티티 매니저 및 엔티티 매니저 팩토리 종료
+            em.close();
+            emf.close();
+        }
+    }
+
+    @Test
     @DisplayName("데이터 등록")
     void testInsert() {
         // 엔티티 매니저 팩토리 생성
@@ -81,12 +135,29 @@ public class Ch07Test {
         EntityTransaction tx = em.getTransaction();
 
         try {
-           tx.begin();
+            tx.begin();
+
+            Department07 dept1 = new Department07();
+            dept1.setDeptName("SI팀");
+            em.persist(dept1);
+
+            Department07 dept2 = new Department07();
+            dept2.setDeptName("SM팀");
+            em.persist(dept2);
 
             for (int i=0; i<=10; i++) {
                 Employee07 employee07 = new Employee07();
-                employee07.setName("테스트" + i);
-                employee07.setTitle("테스트" + i);
+                employee07.setName("개발자" + i);
+                employee07.setTitle("사원" + i);
+                employee07.setDept(dept1);
+                em.persist(employee07);
+            }
+
+            for (int i=0; i<=10; i++) {
+                Employee07 employee07 = new Employee07();
+                employee07.setName("개발자" + i);
+                employee07.setTitle("사원" + i);
+                employee07.setDept(dept2);
                 em.persist(employee07);
             }
 

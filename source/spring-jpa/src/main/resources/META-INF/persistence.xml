@@ -15,6 +15,8 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
         <class>domain.EmployeeCh05</class>
         <class>domain.EmployeeCardCh05</class>
         <class>domain.Employee07</class>
+        <class>domain.Department07</class>
+<!--        <class>domain.*</class>-->
 
         <!-- JPA 프로퍼티 설정 -->
         <properties>
@@ -22,7 +24,8 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
             <property name="javax.persistence.jdbc.driver" value="oracle.jdbc.driver.OracleDriver" />
             <property name="javax.persistence.jdbc.user" value="TEST" />
             <property name="javax.persistence.jdbc.password" value="TEST" />
-            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE" />
+<!--            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:XE" />-->
+            <property name="javax.persistence.jdbc.url" value="jdbc:oracle:thin:@localhost:1521:ORCL" />
 
             <!-- JPA 구현체 관련 설정 -->
             <!-- 하이버네이트가 생성한 SQL 콘솔 출력여부 -->

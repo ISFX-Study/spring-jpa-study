@@ -14,7 +14,7 @@ import java.util.List;
 @Table(name = "S_DEPT")
 public class Department {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name="DEPT_ID")
     private Long deptId;        // 부서ID
 

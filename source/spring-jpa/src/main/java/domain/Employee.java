@@ -51,7 +51,7 @@ public class Employee {
     // @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "SEQ_EMP_ID")
     // @GeneratedValue(strategy = GenerationType.TABLE, generator = "SEQ_TBL_GEN")
     // @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private long id;  // 직원아이디
 
     @Column(length = 25, nullable = false)
