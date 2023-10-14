@@ -31,8 +31,8 @@ JPA, Spring Data JPA Study
 | 4 | 4회차 | 2023-08-07 | 2023-08-20 | :white_check_mark: | :white_check_mark: |
 | 5 | 5회차 | 2023-08-21 | 2023-09-03 | :white_check_mark: | :white_check_mark: |
 | 6 | 6회차 | 2023-09-04 | 2023-09-17 | :white_check_mark: | :white_check_mark: |
-| 7 | 7회차 | 2023-09-18 | 2023-10-01 | :white_check_mark: |  |
-| 8 | 8회차 | 2023-10-02 | 2023-10-15 | :white_check_mark: |  |
+| 7 | 7회차 | 2023-09-18 | 2023-10-01 | :white_check_mark: | :white_check_mark: |
+| 8 | 8회차 | 2023-10-02 | 2023-10-15 | :white_check_mark: | :white_check_mark: |
 | 9 | 9회차 | 2023-10-16 | 2023-10-29 |  |  |
 | 10 | 10회차 | 2023-10-30 | 2023-11-12 |  |  |
 
