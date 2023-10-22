@@ -12,7 +12,7 @@ import java.util.Date;
 @Table(name="S_EMP_CARD")
 public class EmployeeCardCh05 {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long cardId;    // 사원증ID
 
 //    @Id
