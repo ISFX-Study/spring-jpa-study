@@ -1,7 +1,4 @@
-import domain.Employee;
-import domain.EmployeeCardCh05;
-import domain.EmployeeCh05;
-import lombok.extern.java.Log;
+import com.study.springjpa.domain.Employee;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -14,7 +11,7 @@ public class Ch06Test {
     @DisplayName("JPQL 조회")
     void test1() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -66,7 +63,7 @@ public class Ch06Test {
     @DisplayName("JPQL 조회 - 조회조건 있는경우")
     void test2() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -117,7 +114,7 @@ public class Ch06Test {
     @DisplayName("find vs JPQL")
     void test3() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -163,7 +160,7 @@ public class Ch06Test {
     @DisplayName("조인")
     void test4() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -205,7 +202,7 @@ public class Ch06Test {
     @DisplayName("createQuery 사용")
     void test5() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -229,7 +226,7 @@ public class Ch06Test {
     @DisplayName("createNamedQuery 사용")
     void test6() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -274,7 +271,7 @@ public class Ch06Test {
     @DisplayName("createNativeQuery 사용")
     void test7() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();

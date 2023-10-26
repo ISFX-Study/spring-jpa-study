@@ -1,4 +1,4 @@
-import domain.EmployeeBuilder;
+import com.study.springjpa.domain.EmployeeBuilder;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
@@ -6,7 +6,6 @@ import org.slf4j.LoggerFactory;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 public class PatternTest {
     private Logger logger = LoggerFactory.getLogger(this.getClass());

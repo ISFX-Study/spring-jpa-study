@@ -1,4 +1,4 @@
-import repository.EmployeeRepository;
+import com.study.springjpa.repository.EmployeeRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 

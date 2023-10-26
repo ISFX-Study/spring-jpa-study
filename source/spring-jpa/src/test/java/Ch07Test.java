@@ -1,5 +1,5 @@
-import domain.Department07;
-import domain.Employee07;
+import com.study.springjpa.domain.Department07;
+import com.study.springjpa.domain.Employee07;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +17,7 @@ public class Ch07Test {
     @DisplayName("크라이테리어 사용")
     void test1() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -73,7 +73,7 @@ public class Ch07Test {
     @DisplayName("크라이테리어 - 명시적 조인")
     void test2() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -126,7 +126,7 @@ public class Ch07Test {
     @DisplayName("데이터 등록")
     void testInsert() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();

@@ -1,5 +1,5 @@
-import repository.EmployeeRepository;
-import domain.Employee;
+import com.study.springjpa.repository.EmployeeRepository;
+import com.study.springjpa.domain.Employee;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,7 +24,7 @@ class EmployeeRepositoryTest {
     @DisplayName("하이버네이트 테스트 - presistence.xml 사용")
     void test2() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -69,7 +69,7 @@ class EmployeeRepositoryTest {
     @DisplayName("Drity Checking")
     void test3() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -107,7 +107,7 @@ class EmployeeRepositoryTest {
     @DisplayName("find")
     void test5() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -129,7 +129,7 @@ class EmployeeRepositoryTest {
     @DisplayName("find - 없는 데이터 조회한 경우")
     void test6() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -151,7 +151,7 @@ class EmployeeRepositoryTest {
     @DisplayName("분리 상태 테스트")
     void test7() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -194,7 +194,7 @@ class EmployeeRepositoryTest {
     @DisplayName("삭제 상태 테스트")
     void test8() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -230,7 +230,7 @@ class EmployeeRepositoryTest {
     @DisplayName("엔티티 캐시 검색 테스트")
     void test9() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -261,7 +261,7 @@ class EmployeeRepositoryTest {
     @DisplayName("find, getReference 테스트")
     void test10() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -290,7 +290,7 @@ class EmployeeRepositoryTest {
     @DisplayName("엔티티 매니저 비교")
     void test11() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         EntityManager em = null;
         EntityManager em2=  null;
@@ -320,7 +320,7 @@ class EmployeeRepositoryTest {
     @DisplayName("고쟝 이슈 테스트")
     void test12() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -371,7 +371,7 @@ class EmployeeRepositoryTest {
     @DisplayName("update 테스트")
     void test13() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();

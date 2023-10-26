@@ -1,10 +1,9 @@
-package domain;
+package com.study.springjpa.domain;
 
 import lombok.Data;
 import lombok.ToString;
 
 import javax.persistence.*;
-import java.util.Date;
 
 @Data
 @ToString(exclude = "employeeCh05")

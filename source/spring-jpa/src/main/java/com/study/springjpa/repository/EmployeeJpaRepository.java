@@ -1,6 +1,6 @@
-package repository;
+package com.study.springjpa.repository;
 
-import domain.Employee;
+import com.study.springjpa.domain.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

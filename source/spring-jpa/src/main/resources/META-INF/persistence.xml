@@ -10,12 +10,12 @@ http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
         <!-- JPQL XML -->
         <mapping-file>jpql/EmployeeMngm.xml</mapping-file>
 
-        <class>domain.Employee</class>
-        <class>domain.Department</class>
-        <class>domain.EmployeeCh05</class>
-        <class>domain.EmployeeCardCh05</class>
-        <class>domain.Employee07</class>
-        <class>domain.Department07</class>
+        <class>com.study.springjpa.domain.Employee</class>
+        <class>com.study.springjpa.domain.Department</class>
+        <class>com.study.springjpa.domain.EmployeeCh05</class>
+        <class>com.study.springjpa.domain.EmployeeCardCh05</class>
+        <class>com.study.springjpa.domain.Employee07</class>
+        <class>com.study.springjpa.domain.Department07</class>
 
         <!-- JPA 프로퍼티 설정 -->
         <properties>

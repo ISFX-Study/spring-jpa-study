@@ -1,12 +1,9 @@
-package domain;
+package com.study.springjpa.domain;
 
 import lombok.Data;
 import lombok.ToString;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
-import java.sql.Timestamp;
-import java.time.LocalDateTime;
 import java.util.Date;
 
 

@@ -1,16 +1,10 @@
-import domain.Department;
-import domain.Employee;
-import org.hibernate.FlushMode;
-import org.hibernate.Session;
+import com.study.springjpa.domain.Department;
+import com.study.springjpa.domain.Employee;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
-import org.springframework.expression.spel.ast.NullLiteral;
-import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 class Ch04Test {
@@ -18,7 +12,7 @@ class Ch04Test {
     @DisplayName("부서 등록")
     void test1() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -61,7 +55,7 @@ class Ch04Test {
     @DisplayName("단방향 매핑 후 조회")
     void test2() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -86,7 +80,7 @@ class Ch04Test {
     @DisplayName("양방향 매핑 후 조회")
     void test3() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -112,7 +106,7 @@ class Ch04Test {
 //  @Transactional(readOnly = true)
     void test4() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -165,7 +159,7 @@ class Ch04Test {
     @DisplayName("CascadeType.PERSIST")
     void test5() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -211,7 +205,7 @@ class Ch04Test {
     @DisplayName("CascadeType.REMOVE")
     void test6() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -246,7 +240,7 @@ class Ch04Test {
     @DisplayName("CascadeType.REFRESH")
     void test7() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -281,7 +275,7 @@ class Ch04Test {
     @DisplayName("CascadeType.REMOVE VS orphanRemoveal 비교")
     void test8() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();

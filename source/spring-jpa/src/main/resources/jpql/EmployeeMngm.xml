@@ -34,6 +34,6 @@
     </named-native-query>
 
     <sql-result-set-mapping name="nativeResultMap">
-        <entity-result entity-class="domain.Employee" />
+        <entity-result entity-class="com.study.springjpa.domain.Employee" />
     </sql-result-set-mapping>
 </entity-mappings>

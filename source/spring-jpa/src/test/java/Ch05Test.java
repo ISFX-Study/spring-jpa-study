@@ -1,7 +1,5 @@
-import domain.Department;
-import domain.Employee;
-import domain.EmployeeCardCh05;
-import domain.EmployeeCh05;
+import com.study.springjpa.domain.EmployeeCardCh05;
+import com.study.springjpa.domain.EmployeeCh05;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
@@ -9,15 +7,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.EntityTransaction;
 import javax.persistence.Persistence;
-import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 
 public class Ch05Test {
     @Test
     @DisplayName("일대일 단방향 등록 및 조회")
     void test1() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -63,7 +59,7 @@ public class Ch05Test {
     @DisplayName("@MapsId를 이용한 일대일 양방향 매핑")
     void test2() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();

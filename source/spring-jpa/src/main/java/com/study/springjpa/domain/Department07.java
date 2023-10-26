@@ -1,4 +1,4 @@
-package domain;
+package com.study.springjpa.domain;
 
 import lombok.Data;
 import lombok.ToString;

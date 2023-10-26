@@ -1,6 +1,4 @@
-package domain;
-
-import java.util.Date;
+package com.study.springjpa.domain;
 
 public class EmployeeBuilder {
     private Long id;
