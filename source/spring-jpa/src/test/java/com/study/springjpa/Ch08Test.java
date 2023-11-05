@@ -7,7 +7,9 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import com.study.springjpa.repository.EmployeeJpaRepository;
+import org.springframework.data.domain.PageRequest;
 
+import org.springframework.data.domain.Pageable;
 import java.util.List;
 
 /*
@@ -30,17 +32,36 @@ class Ch08Test {
     /**
      * 테스트 메서드 이전에 수행함
      */
-    @BeforeEach
+//    @BeforeEach
     void setUp() {
-        employee = new Employee();
-        employee.setName("안녕");
-
-        employeeJpaRepository.save(employee);
+        for (int i = 0; i < 10; i++) {
+            employee = new Employee();
+            employee.setName("테스트" + i);
+            employeeJpaRepository.save(employee);
+        }
     }
 
     @Test
     @DisplayName("스프링 데이터 JPA 사용")
     void test1() {
         employeeJpaRepository.findAll().forEach(System.out::println);
+    }
+
+    @Test
+    @DisplayName("페이징")
+    void test2() {
+        // 첫 페이지에 2개씩 가져옴
+        Pageable pageable = (Pageable) PageRequest.ofSize(2).withPage(0);
+        List<Employee> list = employeeJpaRepository.findByNameContaining("테스트", pageable);
+
+        list.forEach(System.out::println);
+    }
+
+    @Test
+    @DisplayName("@Query")
+    void test3() {
+        List<Employee> list = employeeJpaRepository.findByNameQuery("테스트");
+
+        list.forEach(System.out::println);
     }
 }
