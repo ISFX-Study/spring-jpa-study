@@ -12,7 +12,7 @@ class Ch04Test {
     @DisplayName("부서 등록")
     void test1() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -55,7 +55,7 @@ class Ch04Test {
     @DisplayName("단방향 매핑 후 조회")
     void test2() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -80,7 +80,7 @@ class Ch04Test {
     @DisplayName("양방향 매핑 후 조회")
     void test3() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -106,7 +106,7 @@ class Ch04Test {
 //  @Transactional(readOnly = true)
     void test4() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -159,7 +159,7 @@ class Ch04Test {
     @DisplayName("CascadeType.PERSIST")
     void test5() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -205,7 +205,7 @@ class Ch04Test {
     @DisplayName("CascadeType.REMOVE")
     void test6() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -240,7 +240,7 @@ class Ch04Test {
     @DisplayName("CascadeType.REFRESH")
     void test7() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -275,7 +275,7 @@ class Ch04Test {
     @DisplayName("CascadeType.REMOVE VS orphanRemoveal 비교")
     void test8() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();
@@ -288,14 +288,21 @@ class Ch04Test {
             tx.begin();
 
             Department dept = em.find(Department.class, Long.valueOf("1"));
-
-//            List<Employee> employeeList = dept.getEmployeeList();
-
-            Employee employee = em.find(Employee.class, Long.valueOf("2"));
+            dept.getEmployeeList().remove(0); //삭제하여 해당 사원과의 연관관계 해제
 
             // Employee에서  DEPT_ID 컬럼이 NULL인 데이터는 삭제되지 않음
 
-            em.remove(dept);
+            // 부서 검색
+            Department departmemt = em.find(Department.class, 1L);
+
+            //부서 객체에서의 사원 삭제(연관관계 변경)
+            List<Employee> employeeList = departmemt.getEmployeeList();
+            employeeList.remove(0);
+            employeeList.remove(1);
+
+            // 부서 삭제
+            em.remove(departmemt);
+
             // 트랜잭션 커밋
             tx.commit();
         } catch (Exception e) {

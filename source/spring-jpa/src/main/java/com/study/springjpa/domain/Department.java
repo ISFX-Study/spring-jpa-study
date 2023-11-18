@@ -11,17 +11,17 @@ import java.util.List;
 @ToString(exclude = "employeeList")
 @Entity
 @Table(name = "S_DEPT")
+@NamedNativeQuery(name = "Department.searchDeptAll" , query = "SELECT * FROM S_DEPT S")
 public class Department {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name="DEPT_ID")
     private Long deptId;        // 부서ID
 
     @Column(name="DEPT_NAME", length = 25, nullable = false)
     private String deptName;    // 부서명
 
-    // @OneToMany(mappedBy = "dept", fetch = FetchType.LAZY, cascade = {CascadeType.ALL})
-    @OneToMany(mappedBy = "dept", cascade = {CascadeType.PERSIST, CascadeType.REMOVE}, orphanRemoval = true)
-    // @OneToMany(mappedBy = "dept", fetch = FetchType.LAZY)
-    private List<Employee> employeeList = new ArrayList<>();
+//    @OneToMany(mappedBy = "dept", cascade = { CascadeType.PERSIST }, orphanRemoval = true)
+    @OneToMany(mappedBy = "dept", cascade = { CascadeType.PERSIST, CascadeType.REMOVE }, orphanRemoval = true)
+    private List<Employee> employeeList = new ArrayList<Employee>();
 }
