@@ -13,7 +13,7 @@ public class Ch05Test {
     @DisplayName("일대일 단방향 등록 및 조회")
     void test1() {
         // 엔티티 매니저 팩토리 생성
-        EntityManagerFactory emf = Persistence.createEntityManagerFactory("com/study/springjpa/domain");
+        EntityManagerFactory emf = Persistence.createEntityManagerFactory("domain");
 
         // 엔티티 매니저 생성
         EntityManager em = emf.createEntityManager();

@@ -9,14 +9,19 @@ import javax.persistence.*;
 @ToString(exclude = "employeeCh05")
 @Entity
 @Table(name="S_EMP_CARD")
+//@SequenceGenerator(name = "employee_card_seq", sequenceName = "EMPLOYEE_CARD_SEQ", allocationSize = 1)
 public class EmployeeCardCh05 {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private long cardId;    // 사원증ID
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "employee_seq")
+//    private long cardId;    // 사원증ID
 
 //    @Id
-//    @Column(name = "CARD_ID")
+//    @GeneratedValue(strategy = GenerationType.AUTO)
 //    private long cardId;    // 사원증ID
+
+    @Id
+    @Column(name = "CARD_ID")
+    private long cardId;    // 사원증ID
 
     @Column(name = "EXPIRE_DATE")
     private String expireDate;
