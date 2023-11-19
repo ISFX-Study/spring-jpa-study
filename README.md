@@ -34,7 +34,6 @@ JPA, Spring Data JPA Study
 | 7 | 7회차 | 2023-09-18 | 2023-10-01 | :white_check_mark: | :white_check_mark: |
 | 8 | 8회차 | 2023-10-02 | 2023-10-15 | :white_check_mark: | :white_check_mark: |
 | 9 | 9회차 | 2023-10-30 | 2023-11-19 | :white_check_mark: | :white_check_mark: |
-| 10 | 10회차 | 2023-11-20 | 2023-11-26 |  |  |
 
 ## :triangular_flag_on_post:  기타
 + 예제소스 : https://www.rubypaper.co.kr/entry/JPA-퀵스타트-예제파일
