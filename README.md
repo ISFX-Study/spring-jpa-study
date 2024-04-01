@@ -9,7 +9,7 @@ JPA, Spring Data JPA Study
 ## :triangular_flag_on_post:  스터디 개요
 * **주제** : JPA, Spring Data JPA
 * **목표** : 책([JPA 퀵스타트](https://product.kyobobook.co.kr/detail/S000001891098)) 완독
-* **기간** : 2023-06-26 ~ 
+* **기간** : 2023-06-26 ~ 2023-11-19
 * **참가자(2명)** : 박은주, 고현아
 * **스터디 시간** : 2주 또는 1주마다 오프라인 만남
 
@@ -37,5 +37,3 @@ JPA, Spring Data JPA Study
 
 ## :triangular_flag_on_post:  기타
 + 예제소스 : https://www.rubypaper.co.kr/entry/JPA-퀵스타트-예제파일
-
-+ 테스트
